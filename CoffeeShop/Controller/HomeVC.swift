@@ -9,12 +9,24 @@ import UIKit
 
 class HomeVC: UIViewController {
 	
-	//let drinks = ["Drip Coffee", "Cold Brew", "Pourover", "Latte", "Iced Latte"]
+	
 	let items = [
-		Item(name: "Drip Coffee", description: "Our daily house drip coffee", icon: "drinks_coffee", price: 2.00),
-		   Item(name: "Croissant", description: "A crispy, buttery croisant", icon: "food_croissant", price: 4.00),
-		   Item(name: "Coffee Beans", description: "In-house roasted beans, whole or ground", icon: "merch_beans", price: 12.50)
-	   ]
+		[
+			Item(name: "Drip Coffee", description: "Our daily house drip coffee", icon: "drinks_coffee", price: 2.00),
+			Item(name: "Cold Brew", description: "Daily brewed cold brew", icon: "drinks_coldbrew", price: 3.00)
+		],
+		[
+			Item(name: "Croissant", description: "A crispy, buttery croisant", icon: "food_croissant", price: 4.00),
+			Item(name: "Donut", description: "Our popular old fashion Donut", icon: "foods_donut", price: 3.50)
+		],
+		[
+			Item(name: "Coffee Beans", description: "In-house roasted beans, whole or ground", icon: "merch_beans", price: 12.50),
+			Item(name: "Newspaper", description: "Daily newspaper", icon: "other_newspaper", price: 3.50)
+		]
+	]
+	
+	
+	
 	
 	private var tableView = UITableView()
 
@@ -71,19 +83,29 @@ extension HomeVC: UITableViewDelegate {
 extension HomeVC: UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return 1
+		return items.count
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return items.count
+		return items[section].count
 	}
 	
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-		cell.textLabel?.text = items[indexPath.row].name
+		cell.textLabel?.text = items[indexPath.section][indexPath.row].name
 		return cell
+	}
+	
+	
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		switch section {
+		case 0: return "Drinks"
+		case 1: return "Food"
+		case 2: return "Merch"
+		default: return ""
+		}
 	}
 }
 
