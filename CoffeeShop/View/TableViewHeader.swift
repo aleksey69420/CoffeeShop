@@ -8,7 +8,7 @@
 import UIKit
 
 
-class Header: UIView {
+class TableViewHeader: UIView {
 	
 	let sortButton: UIButton! = {
 		let button = UIButton(frame: .zero)
@@ -37,7 +37,10 @@ class Header: UIView {
 	}
 	
 	required init?(coder: NSCoder) { fatalError() }
-		
+	
+	//TODO: - Learn about intrinsic size. Is this applicable here?
+	
+	
 	private func configure() {
 		addSubview(sortButton)
 		addSubview(filterButton)

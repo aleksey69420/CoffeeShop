@@ -51,7 +51,8 @@ class HomeVC: UIViewController {
 	
 	
 	private func configureHeaderView() {
-		let header = Header(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 44))
+		let header = TableViewHeader()
+		header.frame.size.height = 44
 		tableView.tableHeaderView = header
 	}
 }
