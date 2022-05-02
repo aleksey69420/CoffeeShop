@@ -16,7 +16,7 @@ class HomeVC: UIViewController {
 			Item(name: "Cold Brew", description: "Daily brewed cold brew", icon: "drinks_coldbrew", price: 3.00)
 		],
 		[
-			Item(name: "Croissant", description: "A crispy, buttery croisant", icon: "food_croissant", price: 4.00),
+			Item(name: "Croissant", description: "A crispy, buttery croisant", icon: "foods_croissant", price: 4.00),
 			Item(name: "Donut", description: "Our popular old fashion Donut", icon: "foods_donut", price: 3.50)
 		],
 		[
@@ -47,8 +47,8 @@ class HomeVC: UIViewController {
 		view.addSubview(tableView)
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-		
+		tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: ItemTableViewCell.reuseId)
+		tableView.rowHeight = ItemTableViewCell.rowHeigh
 		
 		tableView.delegate = self
 		tableView.dataSource = self
@@ -93,8 +93,11 @@ extension HomeVC: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-		cell.textLabel?.text = items[indexPath.section][indexPath.row].name
+		let item = items[indexPath.section][indexPath.row]
+		
+		let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.reuseId, for: indexPath) as! ItemTableViewCell
+		cell.set(item: item)
+		//cell.textLabel?.text = items[indexPath.section][indexPath.row].name
 		return cell
 	}
 	
