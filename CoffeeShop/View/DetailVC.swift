@@ -15,63 +15,34 @@ class DetailVC: UIViewController {
 		super.viewDidLoad()
 		
 		view.backgroundColor = .systemBackground
+		itemDetailView.configure(for: item)
 		configureUI()
-		
 	}
 	
-	let itemView = UIView()
-	let iconImageView = UIImageView()
-	let priceLabel = UILabel()
+	
+	let itemDetailView = ItemDetailView()
+	
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		print(#function)
+		itemDetailView.layoutIfNeeded()
+	}
 	
 	
 	private func configureUI() {
 		
 		//TODO: - Calculate from the safe area.
-		// use height or stack view for all the component
-		let itemViewSize = view.frame.size.width * 0.75
 		
-		itemView.translatesAutoresizingMaskIntoConstraints = false
-		itemView.backgroundColor = .systemYellow
-		itemView.layer.cornerRadius = itemViewSize / 2
-		itemView.clipsToBounds = true
-		
-		
-		
-		iconImageView.translatesAutoresizingMaskIntoConstraints = false
-		iconImageView.image = UIImage(named: item.icon)
-		iconImageView.contentMode = .scaleAspectFit
-		
-		
-		itemView.addSubview(iconImageView)
-		itemView.addSubview(priceLabel)
-		view.addSubview(itemView)
-		
-		
-		priceLabel.translatesAutoresizingMaskIntoConstraints = false
-		priceLabel.text = "$\(item.price)"
-		priceLabel.backgroundColor = .systemGreen
-		priceLabel.textAlignment = .center
-		priceLabel.layer.cornerRadius = 15
-		priceLabel.clipsToBounds = true
-		view.addSubview(priceLabel)
+		view.addSubview(itemDetailView)
 		
 		
 		NSLayoutConstraint.activate([
-			itemView.widthAnchor.constraint(equalToConstant: itemViewSize),
-			itemView.heightAnchor.constraint(equalToConstant: itemViewSize),
-			itemView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			itemView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -200),
 			
-			iconImageView.centerYAnchor.constraint(equalTo: itemView.centerYAnchor),
-			iconImageView.centerXAnchor.constraint(equalTo: itemView.centerXAnchor),
-			iconImageView.widthAnchor.constraint(equalTo: itemView.widthAnchor, multiplier: 0.4),
-			iconImageView.heightAnchor.constraint(equalTo: itemView.heightAnchor, multiplier: 0.4),
-			
-			priceLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			priceLabel.centerYAnchor.constraint(equalTo: itemView.bottomAnchor),
-			priceLabel.widthAnchor.constraint(equalToConstant: 90),
-			priceLabel.heightAnchor.constraint(equalToConstant: 50)
-			
+			itemDetailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+			itemDetailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			itemDetailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			itemDetailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
 		])
 	}
 }
