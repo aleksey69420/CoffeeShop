@@ -17,11 +17,12 @@ class ItemDetailView: UIView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		print(#function)
+		
 		configure()
 	}
 	
 	required init?(coder: NSCoder) { fatalError() }
+	
 	
 	func configure(for item: Item) {
 		iconImageView.image = UIImage(named: item.icon)
@@ -29,16 +30,16 @@ class ItemDetailView: UIView {
 	}
 	
 	
-	// frame dependant code - calling in DetailVC viewDidApper
-	override func layoutIfNeeded() {
-		super.layoutIfNeeded()
-		print(#function)
+	// frame dependant code - don't know how to set prior to configuring layout using constraints
+	// is this the best solution?
+	override func layoutSubviews() {
+		super.layoutSubviews()
 		roundItem.layer.cornerRadius = roundItem.frame.size.width / 2
 	}
 	
 	
 	private func configure() {
-		print(#function)
+		
 		translatesAutoresizingMaskIntoConstraints = false
 		backgroundColor = .systemRed
 		

@@ -9,7 +9,7 @@ import UIKit
 
 class DetailVC: UIViewController {
 	
-	var item: Item! = Item(name: "Cold Brew", description: "Daily brewed cold brew", icon: "drinks_coldbrew", price: 3.00)
+	var item: Item!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -22,13 +22,6 @@ class DetailVC: UIViewController {
 	
 	let itemDetailView = ItemDetailView()
 	let itemBottomView = ItemBottomView()
-	
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		print(#function)
-		itemDetailView.layoutIfNeeded()
-	}
 	
 	
 	private func configureUI() {

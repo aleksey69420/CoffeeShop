@@ -78,7 +78,6 @@ extension HomeVC: UITableViewDelegate {
 		
 		let item = items[indexPath.section][indexPath.row]
 		let detailVC = DetailVC()
-		detailVC.itemDetailView.layoutIfNeeded()
 		detailVC.item = item
 		self.navigationController?.pushViewController(detailVC, animated: true)
 
