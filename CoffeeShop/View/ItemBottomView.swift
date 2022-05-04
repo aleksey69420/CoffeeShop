@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BottomContainerView: UIView {
+class ItemBottomView: UIView {
 	
 	let ingredientsView = IngredientsView()
 	let pairingsView = UIView()
