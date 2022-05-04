@@ -21,6 +21,7 @@ class DetailVC: UIViewController {
 	
 	
 	let itemDetailView = ItemDetailView()
+	let bottomContainerView = BottomContainerView()
 	
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -35,14 +36,19 @@ class DetailVC: UIViewController {
 		//TODO: - Calculate from the safe area.
 		
 		view.addSubview(itemDetailView)
-		
+		view.addSubview(bottomContainerView) // should I use controller instead for collection view
 		
 		NSLayoutConstraint.activate([
 			
 			itemDetailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
 			itemDetailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			itemDetailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			itemDetailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+			itemDetailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			
+			bottomContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			bottomContainerView.topAnchor.constraint(equalTo: itemDetailView.bottomAnchor),
+			bottomContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			bottomContainerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 		])
 	}
 }
