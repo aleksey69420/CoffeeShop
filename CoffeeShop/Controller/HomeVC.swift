@@ -21,9 +21,9 @@ class HomeVC: UIViewController {
 	 Item(type: .merch, name: "Newspaper", description: "Daily newspaper", icon: "other_newspaper", price: 3.50)
  ]
 	
-	private var drinks: [Item]
-	private var food: [Item]
-	private var merch: [Item]
+	private var drinks: [Item] = []
+	private var food: [Item] = []
+	private var merch: [Item] = []
 	
 	
 	private var tableView = UITableView()
