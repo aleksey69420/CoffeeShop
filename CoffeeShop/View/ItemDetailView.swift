@@ -9,7 +9,7 @@ import UIKit
 
 class ItemDetailView: UIView {
 	
-	//TODO: best way to handle Item  - modelView, configure(for:) - current or include in init?
+	#warning("best way to handle Item  - modelView, configure(for:) - current, init?")
 
 	private let roundItem = UIView()
 	private let iconImageView = UIImageView()

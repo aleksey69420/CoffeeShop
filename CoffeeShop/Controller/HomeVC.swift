@@ -9,23 +9,21 @@ import UIKit
 
 class HomeVC: UIViewController {
 	
+		
+	#warning("temp solution - refactor all items logic to the data source class")
 	
 	let items = [
-		[
-			Item(name: "Drip Coffee", description: "Our daily house drip coffee", icon: "drinks_coffee", price: 2.00),
-			Item(name: "Cold Brew", description: "Daily brewed cold brew", icon: "drinks_coldbrew", price: 3.00)
-		],
-		[
-			Item(name: "Croissant", description: "A crispy, buttery croisant", icon: "foods_croissant", price: 4.00),
-			Item(name: "Donut", description: "Our popular old fashion Donut", icon: "foods_donut", price: 3.50)
-		],
-		[
-			Item(name: "Coffee Beans", description: "In-house roasted beans, whole or ground", icon: "merch_beans", price: 12.50),
-			Item(name: "Newspaper", description: "Daily newspaper", icon: "other_newspaper", price: 3.50)
-		]
-	]
+	 Item(type: .drink, name: "Drip Coffee", description: "Our daily house drip coffee", icon: "drinks_coffee", price: 2.00),
+	 Item(type: .drink, name: "Cold Brew", description: "Daily brewed cold brew", icon: "drinks_coldbrew", price: 3.00),
+	 Item(type: .food, name: "Croissant", description: "A crispy, buttery croisant", icon: "foods_croissant", price: 4.00),
+	 Item(type: .food, name: "Donut", description: "Our popular old fashion Donut", icon: "foods_donut", price: 3.50),
+	 Item(type: .merch, name: "Coffee Beans", description: "In-house roasted beans, whole or ground", icon: "merch_beans", price: 12.50),
+	 Item(type: .merch, name: "Newspaper", description: "Daily newspaper", icon: "other_newspaper", price: 3.50)
+ ]
 	
-	
+	private var drinks: [Item]
+	private var food: [Item]
+	private var merch: [Item]
 	
 	
 	private var tableView = UITableView()
@@ -39,6 +37,10 @@ class HomeVC: UIViewController {
 		
 		configureTableView()
 		configureHeaderView()
+		
+		drinks = items.filter { $0.type == .drink }
+		food = items.filter { $0.type == .food }
+		merch = items.filter { $0.type == .merch }
 	}
 	
 	
@@ -76,7 +78,15 @@ extension HomeVC: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 		
-		let item = items[indexPath.section][indexPath.row]
+		var item: Item
+		
+		switch indexPath.section {
+		case 0: item = drinks[indexPath.row]
+		case 1: item = food[indexPath.row]
+		case 2: item = merch[indexPath.row]
+		default: return
+		}
+		
 		let detailVC = DetailVC()
 		detailVC.item = item
 		self.navigationController?.pushViewController(detailVC, animated: true)
@@ -89,21 +99,33 @@ extension HomeVC: UITableViewDelegate {
 extension HomeVC: UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return items.count
+		return Item.ItemType.allCases.count
 	}
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return items[section].count
+		switch section {
+		case 0: return drinks.count
+		case 1: return food.count
+		case 2: return merch.count
+		default: return 0
+		}
 	}
 	
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let item = items[indexPath.section][indexPath.row]
+		var item: Item
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.reuseId, for: indexPath) as! ItemTableViewCell
+		
+		switch indexPath.section {
+		case 0: item = drinks[indexPath.row]
+		case 1: item = food[indexPath.row]
+		case 2: item = merch[indexPath.row]
+		default: return UITableViewCell()
+		}
+		
 		cell.set(item: item)
-		//cell.textLabel?.text = items[indexPath.section][indexPath.row].name
 		return cell
 	}
 	
