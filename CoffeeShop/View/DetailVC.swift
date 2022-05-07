@@ -9,7 +9,19 @@ import UIKit
 
 class DetailVC: UIViewController {
 	
-	var item: Item!
+	private var item: Item!
+	private let itemDetailView = ItemDetailView()
+	private let itemBottomView = ItemBottomView()
+	
+	
+	init(item: Item) {
+		super.init(nibName: nil, bundle: nil)
+		self.item = item
+		title = item.name
+	}
+	
+	required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -20,15 +32,10 @@ class DetailVC: UIViewController {
 	}
 	
 	
-	let itemDetailView = ItemDetailView()
-	let itemBottomView = ItemBottomView()
-	
-	
 	private func configureVC() {
 		navigationController?.setNavigationBarHidden(false, animated: true)
 		navigationController?.navigationBar.prefersLargeTitles = true
 		view.backgroundColor = .systemBackground
-		title = item.name
 	}
 	
 	

@@ -97,8 +97,7 @@ extension HomeVC: UITableViewDelegate {
 		default: return
 		}
 		
-		let detailVC = DetailVC()
-		detailVC.item = item
+		let detailVC = DetailVC(item: item)
 		self.navigationController?.pushViewController(detailVC, animated: true)
 
 	}
