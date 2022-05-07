@@ -14,7 +14,7 @@ class DetailVC: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		view.backgroundColor = .systemBackground
+		configureVC()
 		itemDetailView.configure(for: item)
 		configureUI()
 	}
@@ -22,6 +22,14 @@ class DetailVC: UIViewController {
 	
 	let itemDetailView = ItemDetailView()
 	let itemBottomView = ItemBottomView()
+	
+	
+	private func configureVC() {
+		navigationController?.setNavigationBarHidden(false, animated: true)
+		navigationController?.navigationBar.prefersLargeTitles = true
+		view.backgroundColor = .systemBackground
+		title = item.name
+	}
 	
 	
 	private func configureUI() {
@@ -33,7 +41,7 @@ class DetailVC: UIViewController {
 		
 		NSLayoutConstraint.activate([
 			
-			itemDetailView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+			itemDetailView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.5),
 			itemDetailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			itemDetailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			itemDetailView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),

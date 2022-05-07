@@ -11,6 +11,7 @@ class HomeVC: UIViewController {
 	
 		
 	#warning("temp solution - refactor all items logic to the data source class")
+	//TODO: - add logo view
 	
 	let items = [
 	 Item(type: .drink, name: "Drip Coffee", description: "Our daily house drip coffee", icon: "drinks_coffee", price: 2.00),
@@ -28,19 +29,23 @@ class HomeVC: UIViewController {
 	
 	private var tableView = UITableView()
 
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		view.backgroundColor = .systemBackground
-		title = "Coffee Shop"
-		
-		
+		configureVC()
 		configureTableView()
 		configureHeaderView()
 		
 		drinks = items.filter { $0.type == .drink }
 		food = items.filter { $0.type == .food }
 		merch = items.filter { $0.type == .merch }
+	}
+	
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		navigationController?.setNavigationBarHidden(true, animated: true)
 	}
 	
 	
@@ -68,6 +73,11 @@ class HomeVC: UIViewController {
 		let header = TableViewHeader()
 		header.frame.size.height = 44
 		tableView.tableHeaderView = header
+	}
+	
+	
+	private func configureVC() {
+		view.backgroundColor = .systemBackground
 	}
 }
 
