@@ -83,9 +83,7 @@ extension HomeVC: UITableViewDelegate {
 		
 		#warning("refactor the delegate methods out of vc")
 		
-		let sortedGroups = dataSource.groupedItems.keys.sorted { $0.rawValue < $1.rawValue }
-		
-		if let itemGroup = dataSource.groupedItems[sortedGroups[indexPath.section]] {
+		if let itemGroup = dataSource.groupedItems[dataSource.sortedSections[indexPath.section]] {
 			item = itemGroup[indexPath.row]
 			let detailVC = DetailVC(item: item)
 			self.navigationController?.pushViewController(detailVC, animated: true)

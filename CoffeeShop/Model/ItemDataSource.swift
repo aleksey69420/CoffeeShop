@@ -10,10 +10,10 @@ import UIKit
 
 class ItemDataSource: NSObject, UITableViewDataSource {
 	
-	#warning("review the access control after the final implemetation")
 	private var items: [Item]
+	private(set) var groupedItems: [Item.ItemType: [Item]]
+	private(set) var sortedSections: [Item.ItemType]
 	
-	private(set) var groupedItems: [Item.ItemType: [Item]] = [:]
 	
 	init(items: [Item]) {
 		self.items = items
@@ -23,6 +23,7 @@ class ItemDataSource: NSObject, UITableViewDataSource {
 			newGroups[itemType] = (groups[itemType] ?? []) + [item]
 			return newGroups
 		}
+		self.sortedSections = groupedItems.keys.sorted { $0.rawValue < $1.rawValue }
 	}
 	
 	
@@ -35,14 +36,12 @@ class ItemDataSource: NSObject, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		
-		let sortedSections = groupedItems.keys.sorted { $0.rawValue < $1.rawValue	}
 		return groupedItems[sortedSections[section]]?.count ?? 0
 	}
 	
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let sortedSections = groupedItems.keys.sorted { $0.rawValue < $1.rawValue }
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.reuseId, for: indexPath) as! ItemTableViewCell
 		
@@ -59,7 +58,6 @@ class ItemDataSource: NSObject, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 		
-		let sortedSections = groupedItems.keys.sorted { $0.rawValue < $1.rawValue	}
 		return sortedSections[section].title()
 	}
 }
