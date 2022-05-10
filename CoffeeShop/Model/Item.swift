@@ -7,21 +7,22 @@
 
 import Foundation
 
-struct Item {
+enum ItemType: Int, CaseIterable {
+	case drink
+	case food
+	case merch
 	
-	enum ItemType: Int, CaseIterable {
-		case drink
-		case food
-		case merch
-		
-		func title() -> String {
-			switch self {
-			case .drink: return "Drinks"
-			case .food: return "Food"
-			case .merch: return "Merch"
-			}
+	func title() -> String {
+		switch self {
+		case .drink: return "Drinks"
+		case .food: return "Food"
+		case .merch: return "Merch"
 		}
 	}
+}
+
+
+struct Item {
 	
 	let type: ItemType
 	let name: String

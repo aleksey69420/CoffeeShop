@@ -10,14 +10,16 @@ import UIKit
 
 class ItemDataSource: NSObject, UITableViewDataSource {
 	
+	typealias GroupedItems = [ItemType: [Item]]
+	
 	private var items: [Item]
-	private(set) var groupedItems: [Item.ItemType: [Item]]
-	private(set) var sortedSections: [Item.ItemType]
+	private(set) var groupedItems: GroupedItems
+	private(set) var sortedSections: [ItemType]
 	
 	
 	init(items: [Item]) {
 		self.items = items
-		self.groupedItems = items.reduce([:]) { (groups, item) -> [Item.ItemType: [Item]] in
+		self.groupedItems = items.reduce([:]) { (groups, item) -> GroupedItems in
 			var newGroups = groups
 			let itemType = item.type
 			newGroups[itemType] = (groups[itemType] ?? []) + [item]
