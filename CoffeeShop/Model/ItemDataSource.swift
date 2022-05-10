@@ -11,61 +11,55 @@ import UIKit
 class ItemDataSource: NSObject, UITableViewDataSource {
 	
 	#warning("review the access control after the final implemetation")
-	private let items: [Item]
-	var drinks: [Item] = []
-	var food: [Item] = []
-	var merch: [Item] = []
+	private var items: [Item]
 	
+	private(set) var groupedItems: [Item.ItemType: [Item]] = [:]
 	
 	init(items: [Item]) {
 		self.items = items
-		drinks = items.filter { $0.type == .drink }
-		food = items.filter { $0.type == .food }
-		merch = items.filter { $0.type == .merch }
+		self.groupedItems = items.reduce([:]) { (groups, item) -> [Item.ItemType: [Item]] in
+			var newGroups = groups
+			let itemType = item.type
+			newGroups[itemType] = (groups[itemType] ?? []) + [item]
+			return newGroups
+		}
 	}
 	
 	
 	//MARK: UITableViewDataSource
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
-		return Item.ItemType.allCases.count
+		return groupedItems.keys.count
 	}
 	
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		switch section {
-		case 0: return drinks.count
-		case 1: return food.count
-		case 2: return merch.count
-		default: return 0
-		}
+		
+		let sortedSections = groupedItems.keys.sorted { $0.rawValue < $1.rawValue	}
+		return groupedItems[sortedSections[section]]?.count ?? 0
 	}
 	
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		var item: Item
+		let sortedSections = groupedItems.keys.sorted { $0.rawValue < $1.rawValue }
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: ItemTableViewCell.reuseId, for: indexPath) as! ItemTableViewCell
 		
-		switch indexPath.section {
-		case 0: item = drinks[indexPath.row]
-		case 1: item = food[indexPath.row]
-		case 2: item = merch[indexPath.row]
-		default: return UITableViewCell()
+		if let itemGroup = groupedItems[sortedSections[indexPath.section]] {
+			let item = itemGroup[indexPath.row]
+			cell.set(item: item)
+		} else {
+			print("no items in the section")
 		}
 		
-		cell.set(item: item)
 		return cell
 	}
 	
 	
 	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		switch section {
-		case 0: return "Drinks"
-		case 1: return "Food"
-		case 2: return "Merch"
-		default: return ""
-		}
+		
+		let sortedSections = groupedItems.keys.sorted { $0.rawValue < $1.rawValue	}
+		return sortedSections[section].title()
 	}
 }

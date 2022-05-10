@@ -9,10 +9,18 @@ import Foundation
 
 struct Item {
 	
-	enum ItemType: String, CaseIterable {
+	enum ItemType: Int, CaseIterable {
 		case drink
 		case food
 		case merch
+		
+		func title() -> String {
+			switch self {
+			case .drink: return "Drinks"
+			case .food: return "Food"
+			case .merch: return "Merch"
+			}
+		}
 	}
 	
 	let type: ItemType

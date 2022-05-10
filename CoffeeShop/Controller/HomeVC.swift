@@ -82,15 +82,16 @@ extension HomeVC: UITableViewDelegate {
 		var item: Item
 		
 		#warning("refactor the delegate methods out of vc")
-		switch indexPath.section {
-		case 0: item = dataSource.drinks[indexPath.row]
-		case 1: item = dataSource.food[indexPath.row]
-		case 2: item = dataSource.merch[indexPath.row]
-		default: return
-		}
 		
-		let detailVC = DetailVC(item: item)
-		self.navigationController?.pushViewController(detailVC, animated: true)
+		let sortedGroups = dataSource.groupedItems.keys.sorted { $0.rawValue < $1.rawValue }
+		
+		if let itemGroup = dataSource.groupedItems[sortedGroups[indexPath.section]] {
+			item = itemGroup[indexPath.row]
+			let detailVC = DetailVC(item: item)
+			self.navigationController?.pushViewController(detailVC, animated: true)
+		} else {
+			print("unable to get the right item")
+		}
 	}
 }
 
