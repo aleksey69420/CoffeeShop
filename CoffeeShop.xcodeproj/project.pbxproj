@@ -18,6 +18,7 @@
 		5B2EE1772822C41E00E0337A /* ItemBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EE1762822C41E00E0337A /* ItemBottomView.swift */; };
 		5B2EE1792822CBC400E0337A /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EE1782822CBC400E0337A /* IngredientsView.swift */; };
 		5B2EE1C92829DFB500E0337A /* ItemDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EE1C82829DFB500E0337A /* ItemDataSource.swift */; };
+		5B2EE1D4282B35AB00E0337A /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EE1D3282B35AB00E0337A /* LogoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		5B2EE1762822C41E00E0337A /* ItemBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBottomView.swift; sourceTree = "<group>"; };
 		5B2EE1782822CBC400E0337A /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
 		5B2EE1C82829DFB500E0337A /* ItemDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataSource.swift; sourceTree = "<group>"; };
+		5B2EE1D3282B35AB00E0337A /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +89,8 @@
 		5B045FBD281E2DDC00025151 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5B2EE1702820A65400E0337A /* DetailVC.swift */,
 				5B045FAC281E2D8A00025151 /* HomeVC.swift */,
+				5B2EE1702820A65400E0337A /* DetailVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -110,6 +112,7 @@
 				5B2EE172282188E000E0337A /* ItemDetailView.swift */,
 				5B2EE1762822C41E00E0337A /* ItemBottomView.swift */,
 				5B2EE1782822CBC400E0337A /* IngredientsView.swift */,
+				5B2EE1D3282B35AB00E0337A /* LogoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			files = (
 				5B2EE16D282021C000E0337A /* TableViewHeader.swift in Sources */,
 				5B045FAD281E2D8A00025151 /* HomeVC.swift in Sources */,
+				5B2EE1D4282B35AB00E0337A /* LogoView.swift in Sources */,
 				5B2EE173282188E000E0337A /* ItemDetailView.swift in Sources */,
 				5B2EE16F28203AD300E0337A /* ItemTableViewCell.swift in Sources */,
 				5B2EE1792822CBC400E0337A /* IngredientsView.swift in Sources */,

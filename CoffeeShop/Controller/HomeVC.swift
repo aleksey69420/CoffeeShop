@@ -9,8 +9,7 @@ import UIKit
 
 class HomeVC: UIViewController {
 	
-	//TODO: - add logo view
-	
+	private let logoView = LogoView()
 	
 	private var tableView = UITableView()
 	private var dataSource: ItemDataSource
@@ -28,6 +27,7 @@ class HomeVC: UIViewController {
 		super.viewDidLoad()
 		
 		configureVC()
+		configureUI()
 		configureTableView()
 		configureHeaderView()
 		
@@ -42,7 +42,7 @@ class HomeVC: UIViewController {
 	
 	private func configureTableView() {
 		
-		view.addSubview(tableView)
+		
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 
 		tableView.register(ItemTableViewCell.self, forCellReuseIdentifier: ItemTableViewCell.reuseId)
@@ -50,13 +50,6 @@ class HomeVC: UIViewController {
 		
 		tableView.delegate = self
 		tableView.dataSource = dataSource
-		
-		NSLayoutConstraint.activate([
-			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-		])
 	}
 	
 	
@@ -69,6 +62,26 @@ class HomeVC: UIViewController {
 	
 	private func configureVC() {
 		view.backgroundColor = .systemBackground
+	}
+	
+	
+	private func configureUI() {
+		
+		view.addSubview(logoView)
+		view.addSubview(tableView)
+		
+		NSLayoutConstraint.activate([
+			
+			logoView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			logoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			logoView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			logoView.heightAnchor.constraint(equalToConstant: 150),
+			
+			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			tableView.topAnchor.constraint(equalTo: logoView.bottomAnchor),
+			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+		])
 	}
 }
 
