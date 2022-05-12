@@ -13,6 +13,7 @@ class DetailVC: UIViewController {
 	private let itemDetailView = ItemDetailView()
 	private let itemBottomView = ItemBottomView()
 	
+	private let collectionVC = PairingsVC()
 	
 	init(item: Item) {
 		super.init(nibName: nil, bundle: nil)
@@ -29,6 +30,12 @@ class DetailVC: UIViewController {
 		configureVC()
 		itemDetailView.configure(for: item)
 		configureUI()
+		
+		//MARK: Child VC
+		addChild(collectionVC)
+		itemBottomView.pairingsView.addSubview(collectionVC.view)
+		collectionVC.view.frame = itemBottomView.pairingsView.bounds
+		collectionVC.didMove(toParent: self)
 	}
 	
 	
