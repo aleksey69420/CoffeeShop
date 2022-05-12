@@ -1,8 +1,8 @@
 //
-//  PairingsVC.swift
+//  CollectionVC.swift
 //  CoffeeShop
 //
-//  Created by Aleksey on 5/11/22.
+//  Created by Aleksey on 5/12/22.
 //
 
 import UIKit
@@ -17,28 +17,28 @@ class PairingsVC: UIViewController {
 	
 	
 	private var collectionView: UICollectionView!
-	private var itemCellRegistration: UICollectionView.CellRegistration<ItemCollectionCell, Item>!
-
+	private var itemCellRegistration: UICollectionView.CellRegistration<ItemCollectionViewCell, Item>!
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-		view.backgroundColor = .systemRed
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
 		configureCollectionView()
-    }
-	
+	}
 	
 	private func configureCollectionView() {
 		
-		let layout = UICollectionViewFlowLayout()
-		layout.itemSize = CGSize(width: 120, height: 120)
-		
+		let layout = LayoutManager().createLayout()
+
 		collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-		collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // do I need this
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
-		view.addSubview(collectionView)
 		
+		view.addSubview(collectionView)
 		collectionView.dataSource = self
+		
+		collectionView.backgroundColor = .clear
+		collectionView.alwaysBounceVertical = false
+		
 		
 		itemCellRegistration = UICollectionView.CellRegistration(handler: { cell, indexPath, model in
 			cell.nameLabel.text = model.name
@@ -46,19 +46,13 @@ class PairingsVC: UIViewController {
 			cell.iconImageView.image = UIImage(named: model.icon)
 		})
 		
-		
-		collectionView.backgroundColor = .lightGray
-		
-		
 		NSLayoutConstraint.activate([
 			collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 			collectionView.topAnchor.constraint(equalTo: view.topAnchor),
 			collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 		])
-		
 	}
-	
 }
 
 
