@@ -15,7 +15,7 @@ class PairingsVC: UIViewController {
 		Item(type: .food, name: "Croissant", description: "A crispy, buttery croisant", icon: "foods_croissant", price: 4.00)
 	]
 	
-	
+	private var titleLabel = UILabel()
 	private var collectionView: UICollectionView!
 	private var itemCellRegistration: UICollectionView.CellRegistration<ItemCollectionViewCell, Item>!
 	
@@ -24,6 +24,7 @@ class PairingsVC: UIViewController {
 		super.viewDidLoad()
 		
 		configureCollectionView()
+		layoutUI()
 	}
 	
 	private func configureCollectionView() {
@@ -33,22 +34,37 @@ class PairingsVC: UIViewController {
 		collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		
-		view.addSubview(collectionView)
 		collectionView.dataSource = self
 		
 		collectionView.backgroundColor = .clear
 		collectionView.alwaysBounceVertical = false
-		
 		
 		itemCellRegistration = UICollectionView.CellRegistration(handler: { cell, indexPath, model in
 			cell.nameLabel.text = model.name
 			cell.priceLabel.text = "$\(model.price)"
 			cell.iconImageView.image = UIImage(named: model.icon)
 		})
+	}
+	
+	
+	private func layoutUI() {
+		view.addSubview(titleLabel)
+		view.addSubview(collectionView)
+		
+		titleLabel.translatesAutoresizingMaskIntoConstraints = false
+		titleLabel.text = "pairings"
+		titleLabel.textColor = .label
+		titleLabel.textAlignment = .center
+		titleLabel.font = UIFont.preferredFont(forTextStyle: .title2)
 		
 		NSLayoutConstraint.activate([
+			
+			titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			titleLabel.topAnchor.constraint(equalTo: view.topAnchor),
+			titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			
 			collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+			collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
 			collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 		])
