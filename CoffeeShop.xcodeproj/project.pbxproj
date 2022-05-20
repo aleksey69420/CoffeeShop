@@ -22,6 +22,7 @@
 		5B2EE1E7282D59E000E0337A /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EE1E6282D59E000E0337A /* LayoutManager.swift */; };
 		5B2EE1E9282D724300E0337A /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EE1E8282D724300E0337A /* ItemCollectionViewCell.swift */; };
 		5B2EE1EB282D72E000E0337A /* PairingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2EE1EA282D72E000E0337A /* PairingsVC.swift */; };
+		5B9F33F228317D8000C396B1 /* CoffeeShop.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B9F33F128317D8000C396B1 /* CoffeeShop.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		5B2EE1E6282D59E000E0337A /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		5B2EE1E8282D724300E0337A /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B2EE1EA282D72E000E0337A /* PairingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingsVC.swift; sourceTree = "<group>"; };
+		5B9F33F128317D8000C396B1 /* CoffeeShop.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CoffeeShop.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				5B045FB1281E2D8B00025151 /* Assets.xcassets */,
 				5B045FB6281E2D8B00025151 /* Info.plist */,
+				5B9F33F128317D8000C396B1 /* CoffeeShop.json */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B045FB2281E2D8B00025151 /* Assets.xcassets in Resources */,
+				5B9F33F228317D8000C396B1 /* CoffeeShop.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
