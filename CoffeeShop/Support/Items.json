@@ -1,0 +1,167 @@
+//
+//  Items.json
+//  CoffeeShop
+//
+//  Created by Aleksey on 6/5/22.
+//
+
+import Foundation
+
+{
+  "menuItems": [
+	{
+	  "type": "Drink",
+	  "icon": "drinks_coffee",
+	  "name": "Drip Coffee",
+	  "description": "Our daily house drip coffee",
+	  "price": 2
+	},
+	{
+	  "type": "Drink",
+	  "icon": "drinks_coldbrew",
+	  "name": "Cold Brew",
+	  "description": "Daily brewed cold brew",
+	  "price": 3
+	},
+	{
+	  "type": "Drink",
+	  "icon": "drinks_pourover",
+	  "name": "Pourover",
+	  "description": "A handmade cup of coffee using a V60",
+	  "price": 4.5
+	},
+	{
+	  "type": "Drink",
+	  "icon": "drinks_latte",
+	  "name": "Latte",
+	  "description": "Espresso with milk or milk alternatives",
+	  "price": 5
+	},
+	{
+	  "type": "Drink",
+	  "icon": "drinks_icedlatte",
+	  "name": "Iced Latte",
+	  "description": "Iced espresso with milk or milk alternatives",
+	  "price": 5
+	},
+	{
+	  "type": "Drink",
+	  "icon": "drinks_espresso",
+	  "name": "Espresso",
+	  "description": "A hand-pulled shot of our house espresso",
+	  "price": 3.5
+	},
+	{
+	  "type": "Drink",
+	  "icon": "drinks_vietcoffee",
+	  "name": "Vietnamese Coffee",
+	  "description": "Intensely caffeinated cup using Cafe Du Monde",
+	  "price": 4.25
+	},
+	{
+	  "type": "Drink",
+	  "icon": "drinks_tea",
+	  "name": "Tea",
+	  "description": "Tazo tea, hot or iced",
+	  "price": 2.5
+	},
+	{
+	  "type": "Drink",
+	  "icon": "drinks_milk",
+	  "name": "Milk",
+	  "description": "A cup of a milk of your choice",
+	  "price": 2
+	},
+	{
+	  "type": "Food",
+	  "icon": "foods_croissant",
+	  "name": "Croissant",
+	  "description": "A crispy, buttery croissant",
+	  "price": 4
+	},
+	{
+	  "type": "Food",
+	  "icon": "foods_pie",
+	  "name": "Pie",
+	  "description": "Homebaked Apple Pie slice",
+	  "price": 4.5
+	},
+	{
+	  "type": "Food",
+	  "icon": "foods_donut",
+	  "name": "Donut",
+	  "description": "Our popular old fashion Donut",
+	  "price": 3.5
+	},
+	{
+	  "type": "Food",
+	  "icon": "foods_cupcake",
+	  "name": "Cupcake",
+	  "description": "Moist cake with a layer of vanilla buttercream",
+	  "price": 4
+	},
+	{
+	  "type": "Food",
+	  "icon": "foods_cookie",
+	  "name": "Cookie",
+	  "description": "One giant chocolate chip cookie with sea salt",
+	  "price": 4
+	},
+	{
+	  "type": "Food",
+	  "icon": "foods_gelato",
+	  "name": "Gelato",
+	  "description": "A scoop of our housemade gelato",
+	  "price": 3.5
+	},
+	{
+	  "type": "Food",
+	  "icon": "foods_sandwich",
+	  "name": "Sandwich",
+	  "description": "Ham, cheese, lettuce, tomato on sourdough",
+	  "price": 5.5
+	},
+	{
+	  "type": "Food",
+	  "icon": "foods_chocolate",
+	  "name": "Chocolate",
+	  "description": "A bar of Ritter Sport",
+	  "price": 3.5
+	},
+	{
+	  "type": "Merch",
+	  "icon": "merch_beans",
+	  "name": "Coffee Beans",
+	  "description": "In-house roasted beans, whole or ground",
+	  "price": 12.5
+	},
+	{
+	  "type": "Merch",
+	  "icon": "merch_chemex",
+	  "name": "Chemex",
+	  "description": "To make pourovers at home",
+	  "price": 20
+	},
+	{
+	  "type": "Merch",
+	  "icon": "merch_grinder",
+	  "name": "Coffee Grinder",
+	  "description": "Kalita hand grinder",
+	  "price": 15.5
+	},
+	{
+	  "type": "Merch",
+	  "icon": "merch_filters",
+	  "name": "Coffee Filters",
+	  "description": "Chemex filters, packs of 100",
+	  "price": 6.5
+	},
+	{
+	  "type": "Other",
+	  "icon": "other_newspaper",
+	  "name": "Newspaper",
+	  "description": "Daily newspaper",
+	  "price": 3.5
+	}
+  ]
+}
