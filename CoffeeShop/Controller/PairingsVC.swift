@@ -9,6 +9,8 @@ import UIKit
 
 class PairingsVC: UIViewController {
 	
+	//TODO: pass 3 random pairing items
+	
 	let pairings: [Item] = [
 		Item(type: .drink, name: "Drip Coffee", description: "Our daily house drip coffee", icon: "drinks_coffee", price: 2.00),
 		Item(type: .drink, name: "Cold Brew", description: "Daily brewed cold brew", icon: "drinks_coldbrew", price: 3.00),
@@ -35,6 +37,7 @@ class PairingsVC: UIViewController {
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		
 		collectionView.dataSource = self
+		collectionView.delegate = self
 		
 		collectionView.backgroundColor = .clear
 		collectionView.alwaysBounceVertical = false
@@ -87,5 +90,18 @@ extension PairingsVC: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		return collectionView.dequeueConfiguredReusableCell(using: itemCellRegistration, for: indexPath, item: pairings[indexPath.row])
+	}
+}
+
+
+extension PairingsVC: UICollectionViewDelegate {
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		
+		let item = pairings[indexPath.item]
+		
+		//TODO: don't show pairing on detail screen again when initiated from one of the pairings
+		let detailVC = DetailVC(item: item)
+		navigationController?.pushViewController(detailVC, animated: true)
 	}
 }
