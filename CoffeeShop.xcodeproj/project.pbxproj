@@ -35,7 +35,7 @@
 		5B2EE167281F671A00E0337A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5B2EE16C282021C000E0337A /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		5B2EE16E28203AD300E0337A /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
-		5B2EE1702820A65400E0337A /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailVC.swift; path = CoffeeShop/View/DetailVC.swift; sourceTree = SOURCE_ROOT; };
+		5B2EE1702820A65400E0337A /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailVC.swift; path = CoffeeShop/Screen/Details/Cotroller/DetailVC.swift; sourceTree = SOURCE_ROOT; };
 		5B2EE172282188E000E0337A /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 		5B2EE1762822C41E00E0337A /* ItemBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBottomView.swift; sourceTree = "<group>"; };
 		5B2EE1782822CBC400E0337A /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
@@ -79,11 +79,9 @@
 			isa = PBXGroup;
 			children = (
 				5B045FA8281E2D8A00025151 /* AppDelegate.swift */,
-				5B2EE1E6282D59E000E0337A /* LayoutManager.swift */,
-				5B2EE1E8282D724300E0337A /* ItemCollectionViewCell.swift */,
 				5B2EE166281F66F100E0337A /* Model */,
 				5B2EE16B281F6E9100E0337A /* View */,
-				5B045FBD281E2DDC00025151 /* Controller */,
+				5B516619284EF3C200744B53 /* Screen */,
 				5B045FBC281E2DC000025151 /* Support */,
 			);
 			path = CoffeeShop;
@@ -100,16 +98,6 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		5B045FBD281E2DDC00025151 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				5B045FAC281E2D8A00025151 /* HomeVC.swift */,
-				5B2EE1702820A65400E0337A /* DetailVC.swift */,
-				5B2EE1EA282D72E000E0337A /* PairingsVC.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		5B2EE166281F66F100E0337A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,14 +110,74 @@
 		5B2EE16B281F6E9100E0337A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B2EE1E6282D59E000E0337A /* LayoutManager.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5B516619284EF3C200744B53 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				5B51661A284EF3D100744B53 /* Home */,
+				5B51661D284EF40A00744B53 /* Details */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		5B51661A284EF3D100744B53 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5B51661C284EF3E100744B53 /* View */,
+				5B51661B284EF3D800744B53 /* Cotroller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5B51661B284EF3D800744B53 /* Cotroller */ = {
+			isa = PBXGroup;
+			children = (
+				5B045FAC281E2D8A00025151 /* HomeVC.swift */,
+			);
+			path = Cotroller;
+			sourceTree = "<group>";
+		};
+		5B51661C284EF3E100744B53 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				5B2EE1D3282B35AB00E0337A /* LogoView.swift */,
 				5B2EE16C282021C000E0337A /* TableViewHeader.swift */,
 				5B2EE16E28203AD300E0337A /* ItemTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5B51661D284EF40A00744B53 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				5B51661E284EF40A00744B53 /* View */,
+				5B516620284EF40A00744B53 /* Cotroller */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		5B51661E284EF40A00744B53 /* View */ = {
+			isa = PBXGroup;
+			children = (
 				5B2EE172282188E000E0337A /* ItemDetailView.swift */,
 				5B2EE1762822C41E00E0337A /* ItemBottomView.swift */,
 				5B2EE1782822CBC400E0337A /* IngredientsView.swift */,
+				5B2EE1E8282D724300E0337A /* ItemCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5B516620284EF40A00744B53 /* Cotroller */ = {
+			isa = PBXGroup;
+			children = (
+				5B2EE1702820A65400E0337A /* DetailVC.swift */,
+				5B2EE1EA282D72E000E0337A /* PairingsVC.swift */,
+			);
+			path = Cotroller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
